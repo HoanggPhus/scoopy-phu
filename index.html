@@ -1,211 +1,158 @@
-export default function MamTomStore() {
-  const products = [
-    {
-      id: 1,
-      name: 'Mắm Tôm Bắc Truyền Thống',
-      price: '89.000đ',
-      image: '/mnt/data/ee0e73f6-d0df-4391-b5fb-00b365af6069.png',
-    },
-    {
-      id: 2,
-      name: 'Mắm Tôm Đặc Biệt',
-      price: '119.000đ',
-      image: '/mnt/data/ee0e73f6-d0df-4391-b5fb-00b365af6069.png',
-    },
-    {
-      id: 3,
-      name: 'Mắm Tôm Premium',
-      price: '149.000đ',
-      image: '/mnt/data/ee0e73f6-d0df-4391-b5fb-00b365af6069.png',
-    },
-  ];
+<!DOCTYPE html>
+<html lang="vi">
 
-  return (
-    <div className="bg-[#f7f3ee] min-h-screen text-gray-900 font-sans">
-      {/* HEADER */}
-      <header className="bg-[#4b1e1e] text-white sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
-          <h1 className="text-3xl font-black tracking-wide">
-            🦐 MẮM TÔM BẮC
-          </h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Mắm Tôm Bắc</title>
 
-          <nav className="hidden md:flex gap-8 font-medium">
-            <a href="#home" className="hover:text-yellow-300 transition">
-              Trang chủ
-            </a>
-            <a href="#products" className="hover:text-yellow-300 transition">
-              Sản phẩm
-            </a>
-            <a href="#about" className="hover:text-yellow-300 transition">
-              Giới thiệu
-            </a>
-            <a href="#contact" className="hover:text-yellow-300 transition">
-              Liên hệ
-            </a>
-          </nav>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #f5f5f5;
+    }
 
-          <button className="bg-yellow-400 text-black px-5 py-2 rounded-full font-bold hover:scale-105 transition">
-            🛒 Mua ngay
-          </button>
-        </div>
-      </header>
+    header {
+      background: #4b1e1e;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      {/* HERO */}
-      <section
-        id="home"
-        className="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12 px-6 py-24"
-      >
-        <div>
-          <p className="uppercase tracking-[0.3em] text-sm text-[#8b5e3c] mb-4">
-            Hương vị truyền thống Việt Nam
-          </p>
+    header h1 {
+      margin: 0;
+    }
 
-          <h2 className="text-6xl font-black leading-tight mb-6 text-[#4b1e1e]">
-            MẮM TÔM
-            <br />
-            CHÍNH GỐC
-          </h2>
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
 
-          <p className="text-lg text-gray-700 leading-8 mb-8">
-            Đậm đà hương vị Bắc Bộ 🇻🇳
-            <br />
-            Thơm ngon — chuẩn vị — lên men tự nhiên.
-          </p>
+    .hero {
+      padding: 60px;
+      text-align: center;
+      background: white;
+    }
 
-          <div className="flex gap-4">
-            <button className="bg-[#4b1e1e] text-white px-8 py-4 rounded-full font-bold hover:scale-105 transition">
-              Đặt hàng ngay 🚀
-            </button>
+    .hero img {
+      width: 300px;
+      margin-top: 20px;
+    }
 
-            <button className="border-2 border-[#4b1e1e] px-8 py-4 rounded-full font-bold hover:bg-[#4b1e1e] hover:text-white transition">
-              Xem thêm
-            </button>
-          </div>
-        </div>
+    .hero h2 {
+      font-size: 60px;
+      color: #4b1e1e;
+    }
 
-        <div className="flex justify-center relative">
-          <div className="absolute w-[350px] h-[350px] bg-yellow-200 rounded-full blur-3xl opacity-40"></div>
+    .btn {
+      background: #4b1e1e;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 18px;
+    }
 
-          <img
-            src="/mnt/data/ee0e73f6-d0df-4391-b5fb-00b365af6069.png"
-            alt="Mắm tôm"
-            className="relative z-10 w-[380px] hover:scale-105 transition duration-500 drop-shadow-2xl"
-          />
-        </div>
-      </section>
+    .products {
+      padding: 50px;
+      text-align: center;
+    }
 
-      {/* FEATURES */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 px-6">
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md text-center">
-            <h3 className="text-2xl font-bold mb-3">🦐 Nguyên liệu sạch</h3>
-            <p className="text-gray-600">
-              Làm từ tôm biển tươi nguyên chất.
-            </p>
-          </div>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md text-center">
-            <h3 className="text-2xl font-bold mb-3">🇻🇳 Chuẩn vị Bắc</h3>
-            <p className="text-gray-600">
-              Công thức truyền thống đậm đà.
-            </p>
-          </div>
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
 
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md text-center">
-            <h3 className="text-2xl font-bold mb-3">🚚 Ship toàn quốc</h3>
-            <p className="text-gray-600">
-              Giao hàng nhanh và đóng gói kỹ.
-            </p>
-          </div>
-        </div>
-      </section>
+    .card img {
+      width: 180px;
+    }
 
-      {/* PRODUCTS */}
-      <section id="products" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="uppercase tracking-[0.3em] text-[#8b5e3c] text-sm mb-3">
-            Sản phẩm nổi bật
-          </p>
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
 
-          <h2 className="text-5xl font-black text-[#4b1e1e]">
-            MẮM TÔM BEST SELLER 🔥
-          </h2>
-        </div>
+<body>
 
-        <div className="grid md:grid-cols-3 gap-10">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-[40px] p-8 shadow-lg hover:-translate-y-3 transition duration-500"
-            >
-              <div className="flex justify-center mb-8">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-[220px] object-contain hover:scale-105 transition"
-                />
-              </div>
+<header>
+  <h1>🦐 MẮM TÔM BẮC</h1>
 
-              <h3 className="text-2xl font-bold mb-3 text-[#4b1e1e]">
-                {product.name}
-              </h3>
+  <nav>
+    <a href="#">Trang chủ</a>
+    <a href="#">Sản phẩm</a>
+    <a href="#">Liên hệ</a>
+  </nav>
+</header>
 
-              <p className="text-3xl font-black mb-6 text-black">
-                {product.price}
-              </p>
+<section class="hero">
 
-              <button className="w-full bg-[#4b1e1e] text-white py-4 rounded-2xl font-bold hover:bg-black transition">
-                🛒 Thêm vào giỏ hàng
-              </button>
-            </div>
-          ))}
-        </div>
-      </section>
+  <h2>MẮM TÔM CHÍNH GỐC</h2>
 
-      {/* ABOUT */}
-      <section id="about" className="bg-[#4b1e1e] text-white py-24">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-5xl font-black mb-8">
-            HƯƠNG VỊ QUÊ HƯƠNG 🇻🇳
-          </h2>
+  <p>
+    Đậm đà hương vị Bắc Bộ 🇻🇳
+  </p>
 
-          <p className="text-lg leading-9 text-gray-200">
-            Mắm tôm Bắc được làm theo phương pháp truyền thống, lên men tự nhiên và giữ trọn hương vị đặc trưng.
-            Đây là loại gia vị không thể thiếu trong nhiều món ăn Việt như bún đậu mắm tôm, chả cá và lẩu.
-          </p>
-        </div>
-      </section>
+  <button class="btn">
+    Đặt hàng ngay 🚀
+  </button>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-20 bg-white text-center px-6">
-        <h2 className="text-5xl font-black mb-10 text-[#4b1e1e]">
-          LIÊN HỆ 📞
-        </h2>
+  <br><br>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md">
-            <h3 className="text-2xl font-bold mb-3">📧 Email</h3>
-            <p>mamtomstore@gmail.com</p>
-          </div>
+  <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop">
 
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md">
-            <h3 className="text-2xl font-bold mb-3">📱 Hotline</h3>
-            <p>0123 456 789</p>
-          </div>
+</section>
 
-          <div className="bg-[#fff7eb] rounded-3xl p-8 shadow-md">
-            <h3 className="text-2xl font-bold mb-3">🚚 Giao hàng</h3>
-            <p>Ship toàn quốc</p>
-          </div>
-        </div>
-      </section>
+<section class="products">
 
-      {/* FOOTER */}
-      <footer className="bg-black text-gray-400 text-center py-6 text-sm">
-        © 2026 Mắm Tôm Bắc — All Rights Reserved.
-      </footer>
+  <h2>SẢN PHẨM NỔI BẬT 🔥</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop">
+
+      <h3>Mắm Tôm Bắc</h3>
+
+      <p>89.000đ</p>
+
+      <button class="btn">Mua ngay</button>
     </div>
-  );
-}
 
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop">
 
+      <h3>Mắm Tôm Premium</h3>
+
+      <p>149.000đ</p>
+
+      <button class="btn">Mua ngay</button>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Mắm Tôm Bắc
+</footer>
+
+</body>
+</html>
